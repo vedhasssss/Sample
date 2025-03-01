@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+        .calculator {
+            width: 280px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .display {
+            width: 100%;
+            height: 60px;
+            font-size: 1.8em;
+            text-align: right;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #f3f3f3;
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        .buttons button {
+            width: 22%;
+            height: 55px;
+            margin: 5px;
+            font-size: 1.4em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            color: white;
+            transition: 0.2s;
+        }
+        .buttons button:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #005ecb, #009de0);
+        }
+        .buttons button:nth-child(1) {
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+        }
+        .buttons button:nth-child(1):active {
+            background: linear-gradient(135deg, #ffb300, #ff8800);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('+')">+</button>
+            <button onclick="appendValue('-')">-</button>
+            <button onclick="appendValue('*')">×</button>
+            <button onclick="appendValue('/')">÷</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        function appendValue(value) {
+            document.getElementById("display").value += value;
+        }
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+        function calculate() {
+            try {
+                document.getElementById("display").value = eval(document.getElementById("display").value);
+            } catch {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
